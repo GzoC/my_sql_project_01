@@ -1,0 +1,39 @@
+# Ignorar archivos de base de datos SQLite
+db/*.db
+db/*.sqlite
+db/*.sqlite3
+db/*.db-journal
+
+# Ignorar archivos CSV (si no quieres subir los datos crudos)
+data/*.csv
+
+# Ignorar archivos generados de Jupyter Notebook
+.ipynb_checkpoints/
+
+# Ignorar entornos virtuales (si por error se creara dentro del proyecto)
+venv/
+env/
+sql_env/
+
+# Ignorar archivos de configuración de Jupyter
+.jupyter/
+.jupyter_cache/
+
+# Ignorar dependencias y archivos de logs
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Ignorar archivos de configuración de VSCode y otros editores
+.vscode/
+*.code-workspace
+
+# Ignorar configuraciones de Jupyter Lab
+.lab/
+node_modules/
+
+# Ignorar credenciales (por seguridad, si en el futuro agregas archivos de configuración)
+*.env
+config.ini
+secrets.json
