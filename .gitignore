@@ -1,11 +1,14 @@
-# Ignorar archivos de base de datos SQLite
+# Ignorar todos los archivos .db excepto production.db
 db/*.db
+!db/production.db
 db/*.sqlite
 db/*.sqlite3
 db/*.db-journal
 
-# Ignorar archivos CSV (si no quieres subir los datos crudos)
+# Ignorar todos los CSV excepto los de este proyecto
 data/*.csv
+!data/orders.csv
+!data/products.csv
 
 # Ignorar archivos generados de Jupyter Notebook
 .ipynb_checkpoints/

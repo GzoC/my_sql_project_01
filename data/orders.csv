@@ -1,0 +1,7 @@
+﻿order_id,product_id,quantity,order_date,status
+1,101,3,2023-01-10,shipped
+2,103,1,2023-01-11,shipped
+3,102,2,2023-01-12,cancelled
+4,101,5,2023-01-15,shipped
+5,104,2,2023-01-15,pending
+6,105,7,2023-01-18,shipped
