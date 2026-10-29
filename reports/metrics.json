@@ -1,0 +1,453 @@
+{
+  "provenance": {
+    "synthetic": true,
+    "seed": 42,
+    "period": {
+      "start": "2025-01-01 00:00:00",
+      "end": "2025-04-01 00:00:00"
+    },
+    "python": "3.12.13",
+    "sqlite": "3.53.1",
+    "rows": {
+      "assets": 12,
+      "work_orders": 261,
+      "failures": 184,
+      "downtime": 326,
+      "shifts": 1080,
+      "parts": 6,
+      "part_usage": 363
+    },
+    "integrity_check": "ok",
+    "foreign_key_violations": 0
+  },
+  "results": {
+    "01_downtime": [
+      {
+        "asset_id": 2,
+        "name": "Equipo 02",
+        "stop_hours": 532.7166666666667,
+        "share_pct": 21.48,
+        "cumulative_pct": 21.48
+      },
+      {
+        "asset_id": 10,
+        "name": "Equipo 10",
+        "stop_hours": 487.1666666666667,
+        "share_pct": 19.65,
+        "cumulative_pct": 41.13
+      },
+      {
+        "asset_id": 3,
+        "name": "Equipo 03",
+        "stop_hours": 275.43333333333334,
+        "share_pct": 11.11,
+        "cumulative_pct": 52.24
+      },
+      {
+        "asset_id": 5,
+        "name": "Equipo 05",
+        "stop_hours": 275.28333333333336,
+        "share_pct": 11.1,
+        "cumulative_pct": 63.34
+      },
+      {
+        "asset_id": 8,
+        "name": "Equipo 08",
+        "stop_hours": 250.38333333333333,
+        "share_pct": 10.1,
+        "cumulative_pct": 73.44
+      },
+      {
+        "asset_id": 11,
+        "name": "Equipo 11",
+        "stop_hours": 224.23333333333332,
+        "share_pct": 9.04,
+        "cumulative_pct": 82.48
+      },
+      {
+        "asset_id": 1,
+        "name": "Equipo 01",
+        "stop_hours": 177.33333333333334,
+        "share_pct": 7.15,
+        "cumulative_pct": 89.64
+      },
+      {
+        "asset_id": 4,
+        "name": "Equipo 04",
+        "stop_hours": 80.5,
+        "share_pct": 3.25,
+        "cumulative_pct": 92.88
+      },
+      {
+        "asset_id": 12,
+        "name": "Equipo 12",
+        "stop_hours": 59.0,
+        "share_pct": 2.38,
+        "cumulative_pct": 95.26
+      },
+      {
+        "asset_id": 7,
+        "name": "Equipo 07",
+        "stop_hours": 44.0,
+        "share_pct": 1.77,
+        "cumulative_pct": 97.04
+      },
+      {
+        "asset_id": 6,
+        "name": "Equipo 06",
+        "stop_hours": 43.5,
+        "share_pct": 1.75,
+        "cumulative_pct": 98.79
+      },
+      {
+        "asset_id": 9,
+        "name": "Equipo 09",
+        "stop_hours": 30.0,
+        "share_pct": 1.21,
+        "cumulative_pct": 100.0
+      }
+    ],
+    "02_mttr": [
+      {
+        "asset_id": 4,
+        "name": "Equipo 04",
+        "failures": 12,
+        "restored": 12,
+        "censored": 0,
+        "mttr_hours": 6.29
+      },
+      {
+        "asset_id": 8,
+        "name": "Equipo 08",
+        "failures": 12,
+        "restored": 11,
+        "censored": 1,
+        "mttr_hours": 5.77
+      },
+      {
+        "asset_id": 6,
+        "name": "Equipo 06",
+        "failures": 7,
+        "restored": 7,
+        "censored": 0,
+        "mttr_hours": 5.64
+      },
+      {
+        "asset_id": 11,
+        "name": "Equipo 11",
+        "failures": 8,
+        "restored": 7,
+        "censored": 1,
+        "mttr_hours": 5.29
+      },
+      {
+        "asset_id": 10,
+        "name": "Equipo 10",
+        "failures": 12,
+        "restored": 10,
+        "censored": 2,
+        "mttr_hours": 4.85
+      },
+      {
+        "asset_id": 2,
+        "name": "Equipo 02",
+        "failures": 31,
+        "restored": 30,
+        "censored": 1,
+        "mttr_hours": 4.73
+      },
+      {
+        "asset_id": 12,
+        "name": "Equipo 12",
+        "failures": 12,
+        "restored": 12,
+        "censored": 0,
+        "mttr_hours": 4.58
+      },
+      {
+        "asset_id": 9,
+        "name": "Equipo 09",
+        "failures": 6,
+        "restored": 6,
+        "censored": 0,
+        "mttr_hours": 4.33
+      },
+      {
+        "asset_id": 7,
+        "name": "Equipo 07",
+        "failures": 11,
+        "restored": 11,
+        "censored": 0,
+        "mttr_hours": 3.64
+      },
+      {
+        "asset_id": 3,
+        "name": "Equipo 03",
+        "failures": 25,
+        "restored": 24,
+        "censored": 1,
+        "mttr_hours": 3.5
+      },
+      {
+        "asset_id": 1,
+        "name": "Equipo 01",
+        "failures": 33,
+        "restored": 32,
+        "censored": 1,
+        "mttr_hours": 3.39
+      },
+      {
+        "asset_id": 5,
+        "name": "Equipo 05",
+        "failures": 15,
+        "restored": 14,
+        "censored": 1,
+        "mttr_hours": 2.64
+      }
+    ],
+    "03_backlog": [
+      {
+        "order_id": 70,
+        "name": "Equipo 02",
+        "kind": "corrective",
+        "priority": 1,
+        "opened_at": "2025-03-14 07:47:00",
+        "due_at": "2025-03-16 07:47:00",
+        "age_days": 17.68,
+        "overdue": 1,
+        "age_rank_in_asset": 1
+      },
+      {
+        "order_id": 150,
+        "name": "Equipo 05",
+        "kind": "corrective",
+        "priority": 1,
+        "opened_at": "2025-03-22 05:43:00",
+        "due_at": "2025-03-24 05:43:00",
+        "age_days": 9.76,
+        "overdue": 1,
+        "age_rank_in_asset": 1
+      },
+      {
+        "order_id": 229,
+        "name": "Equipo 10",
+        "kind": "corrective",
+        "priority": 1,
+        "opened_at": "2025-03-23 10:52:00",
+        "due_at": "2025-03-25 10:52:00",
+        "age_days": 8.55,
+        "overdue": 1,
+        "age_rank_in_asset": 2
+      },
+      {
+        "order_id": 107,
+        "name": "Equipo 03",
+        "kind": "corrective",
+        "priority": 1,
+        "opened_at": "2025-03-23 13:34:00",
+        "due_at": "2025-03-25 13:34:00",
+        "age_days": 8.43,
+        "overdue": 1,
+        "age_rank_in_asset": 1
+      },
+      {
+        "order_id": 40,
+        "name": "Equipo 01",
+        "kind": "corrective",
+        "priority": 1,
+        "opened_at": "2025-03-29 07:10:00",
+        "due_at": "2025-03-31 07:10:00",
+        "age_days": 2.7,
+        "overdue": 1,
+        "age_rank_in_asset": 1
+      },
+      {
+        "order_id": 243,
+        "name": "Equipo 11",
+        "kind": "corrective",
+        "priority": 2,
+        "opened_at": "2025-03-24 08:46:00",
+        "due_at": "2025-03-26 08:46:00",
+        "age_days": 7.63,
+        "overdue": 1,
+        "age_rank_in_asset": 1
+      },
+      {
+        "order_id": 199,
+        "name": "Equipo 08",
+        "kind": "corrective",
+        "priority": 2,
+        "opened_at": "2025-03-24 09:07:00",
+        "due_at": "2025-03-26 09:07:00",
+        "age_days": 7.62,
+        "overdue": 1,
+        "age_rank_in_asset": 1
+      },
+      {
+        "order_id": 226,
+        "name": "Equipo 10",
+        "kind": "corrective",
+        "priority": 3,
+        "opened_at": "2025-03-13 14:20:00",
+        "due_at": "2025-03-15 14:20:00",
+        "age_days": 18.4,
+        "overdue": 1,
+        "age_rank_in_asset": 1
+      }
+    ],
+    "04_parts": [
+      {
+        "part_id": 6,
+        "name": "Variador",
+        "units": 124,
+        "cost_cents": 27280000,
+        "cost_usd": 272800.0,
+        "share_pct": 83.27,
+        "cumulative_pct": 83.27
+      },
+      {
+        "part_id": 3,
+        "name": "Contactor",
+        "units": 132,
+        "cost_cents": 2376000,
+        "cost_usd": 23760.0,
+        "share_pct": 7.25,
+        "cumulative_pct": 90.53
+      },
+      {
+        "part_id": 1,
+        "name": "Rodamiento",
+        "units": 115,
+        "cost_cents": 1380000,
+        "cost_usd": 13800.0,
+        "share_pct": 4.21,
+        "cumulative_pct": 94.74
+      },
+      {
+        "part_id": 4,
+        "name": "Sensor",
+        "units": 109,
+        "cost_cents": 926500,
+        "cost_usd": 9265.0,
+        "share_pct": 2.83,
+        "cumulative_pct": 97.57
+      },
+      {
+        "part_id": 5,
+        "name": "Correa",
+        "units": 123,
+        "cost_cents": 492000,
+        "cost_usd": 4920.0,
+        "share_pct": 1.5,
+        "cumulative_pct": 99.07
+      },
+      {
+        "part_id": 2,
+        "name": "Sello",
+        "units": 122,
+        "cost_cents": 305000,
+        "cost_usd": 3050.0,
+        "share_pct": 0.93,
+        "cumulative_pct": 100.0
+      }
+    ],
+    "05_shifts": [
+      {
+        "asset_id": 2,
+        "name": "Equipo 02",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 212.27,
+        "scheduled_availability_pct": 70.52
+      },
+      {
+        "asset_id": 10,
+        "name": "Equipo 10",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 170.23,
+        "scheduled_availability_pct": 76.36
+      },
+      {
+        "asset_id": 3,
+        "name": "Equipo 03",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 108.85,
+        "scheduled_availability_pct": 84.88
+      },
+      {
+        "asset_id": 5,
+        "name": "Equipo 05",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 105.87,
+        "scheduled_availability_pct": 85.3
+      },
+      {
+        "asset_id": 8,
+        "name": "Equipo 08",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 95.88,
+        "scheduled_availability_pct": 86.68
+      },
+      {
+        "asset_id": 11,
+        "name": "Equipo 11",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 89.48,
+        "scheduled_availability_pct": 87.57
+      },
+      {
+        "asset_id": 1,
+        "name": "Equipo 01",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 81.9,
+        "scheduled_availability_pct": 88.63
+      },
+      {
+        "asset_id": 4,
+        "name": "Equipo 04",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 31.8,
+        "scheduled_availability_pct": 95.58
+      },
+      {
+        "asset_id": 7,
+        "name": "Equipo 07",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 27.0,
+        "scheduled_availability_pct": 96.25
+      },
+      {
+        "asset_id": 12,
+        "name": "Equipo 12",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 24.15,
+        "scheduled_availability_pct": 96.65
+      },
+      {
+        "asset_id": 9,
+        "name": "Equipo 09",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 19.05,
+        "scheduled_availability_pct": 97.35
+      },
+      {
+        "asset_id": 6,
+        "name": "Equipo 06",
+        "shifts": 90,
+        "scheduled_hours": 720.0,
+        "stopped_in_shift_hours": 17.93,
+        "scheduled_availability_pct": 97.51
+      }
+    ]
+  }
+}

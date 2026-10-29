@@ -1,169 +1,60 @@
+# SQL para decisiones de mantenimiento
 
-# 📊 Análisis de Datos con SQL en Python (SQLite)
+**De órdenes y paradas a cinco decisiones verificables, con consultas abiertas y datos sintéticos reproducibles.**
 
-## 🚀 Introducción
+Python · SQLite · CTE · funciones de ventana · integridad relacional · analítica industrial
 
-Este proyecto demuestra el uso de **SQL para análisis de datos** en **Python**, utilizando **SQLite** como base de datos relacional. Se trabaja con dos datasets (`orders.csv` y `products.csv`), los cuales se cargan en la base de datos `production.db`, permitiendo realizar consultas SQL para extraer información valiosa.
+El escenario inventa 12 activos, 261 órdenes y 90 días de operación. No contiene datos de una planta real. El foco es demostrar modelado, calidad de datos y razonamiento temporal: una parada duplicada no debe duplicar horas; una falla abierta no debe reducir artificialmente el MTTR.
 
-Este proyecto es parte de mi portafolio como **Data Analyst**, con el objetivo de fortalecer mis habilidades en **SQL, Python y bases de datos**.  
+## Reproducir en un comando
 
----
-
-## 📂 **Estructura del Proyecto**
-
-```
-my_sql_project
-│   README.md                 <- Documentación del proyecto
-│   requirements.txt           <- Lista de dependencias necesarias
-│
-├── data                       <- Carpeta de datasets en formato CSV
-│    ├── orders.csv            <- Datos de pedidos
-│    ├── products.csv          <- Datos de productos
-│
-├── notebooks                  <- Carpeta con Jupyter Notebooks
-│    ├── 01_sql_analysis.ipynb  <- Notebook principal con análisis SQL
-│
-└── db                         <- Carpeta de base de datos SQLite
-     ├── production.db         <- Base de datos SQLite con datos cargados
-```
-
----
-
-## 🔧 **Requisitos y Configuración**
-
-### 📌 **1. Clonar el repositorio**
-Para descargar el proyecto, abre una terminal y ejecuta:
+Python 3.11 o posterior con SQLite 3.37 o posterior. Sin librerías externas de ejecución.
 
 ```bash
-git clone https://github.com/tu_usuario/my_sql_project.git
-cd my_sql_project
+git clone https://github.com/GzoC/my_sql_project_01.git
+cd my_sql_project_01
+python -m maintenance_sql
 ```
 
-### 📌 **2. Crear un entorno virtual**
-Recomendamos crear un entorno virtual para instalar las dependencias:
+Abre `reports/index.html` en un navegador. [Lee las cinco respuestas](reports/RESULTS.md) directamente en GitHub. El comando genera tablas CSV, HTML, Markdown, JSON, datos sintéticos, hashes y planes de ejecución. Vuelve a ejecutarlo para reproducir el informe con la misma semilla; sobrescribe los artefactos de esa carpeta de salida.
 
 ```bash
-python -m venv sql_env
+python -m maintenance_sql --output reports_marzo --start "2025-03-01 00:00:00" --end "2025-04-01 00:00:00"
+python -m maintenance_sql --output reports_seed7 --seed 7
+python -m maintenance_sql --output reports_db --save-db var/maintenance.sqlite3
+python -m unittest discover -s tests -v
 ```
 
-Activa el entorno:
+`--save-db` es opcional y rechaza un archivo ya existente. La base se genera en memoria; el archivo guardado permite consultas de lectura con un cliente SQLite. La CLI instalada con `pip install .` es `maintenance-sql` y funciona fuera del checkout.
 
-- **Windows (CMD)**:
-  ```bash
-  sql_env\Scripts\activate
-  ```
-- **Windows (PowerShell)**:
-  ```powershell
-  sql_env\Scripts\Activate.ps1
-  ```
-- **Linux/Mac**:
-  ```bash
-  source sql_env/bin/activate
-  ```
+## Las cinco preguntas
 
-### 📌 **3. Instalar dependencias**
-Ejecuta el siguiente comando para instalar las librerías necesarias:
+| Pregunta | Técnica SQL | Decisión posible |
+|---|---|---|
+| ¿Qué activos concentran las paradas? | Unión de intervalos con máximo acumulado, CTE y Pareto | Investigar causas y cobertura en los activos líderes |
+| ¿Cómo varía el tiempo de restauración por activo? | Agregación condicional y censura al corte | Revisar capacidad de restauración sin ocultar fallas abiertas |
+| ¿Qué órdenes siguen abiertas? | Snapshot temporal y ROW_NUMBER | Priorizar órdenes urgentes y antiguas |
+| ¿Qué repuestos concentran el costo? | Precio histórico por consumo y suma acumulada | Revisar abastecimiento sin inventar ahorros |
+| ¿Cuánta disponibilidad queda en los turnos? | Intersección de intervalos y calendario | Examinar tiempo perdido dentro del plan, sin llamarlo OEE |
 
-```bash
-pip install -r requirements.txt
-```
+Las consultas están en [maintenance_sql/sql](maintenance_sql/sql). [Definiciones y modelo](docs/METHODOLOGY.md) · [Procedencia](docs/DATA.md) · [Estado y evidencia](docs/IMPLEMENTATION_STATUS.md).
 
-### 📌 **4. Ejecutar el Notebook**
-Inicia Jupyter Notebook con:
+## Resultado del escenario de referencia
 
-```bash
-jupyter notebook
-```
+Con semilla 42, Equipo 02 concentra 532,72 horas calendario de parada (21,48%). Su disponibilidad en turnos es 70,52%; la diferencia responde al calendario de 8 horas diarias. Ocho órdenes permanecen abiertas al corte. Los variadores concentran 83,27% del costo sintético de repuestos. Estas cifras describen el escenario generado, no desempeño profesional ni resultados industriales medidos.
 
-Abre el archivo `notebooks/01_sql_analysis.ipynb` y sigue las instrucciones.
+Los planes `EXPLAIN QUERY PLAN` se guardan para inspección. No se afirma una mejora de rendimiento por añadir índices; se necesitarían una carga representativa y una comparación medida.
 
----
+## Pruebas y límites
 
-## 🗂 **Descripción de los Datos**
+Las pruebas usan casos calculables a mano: intervalos anidados/solapados/abiertos, límites exactos del período, fallas sin restaurar, precios históricos, cierre posterior al corte, ausencia de turnos, restricciones y rollback. La CI reproduce el informe y ejecuta el wheel instalado fuera del repositorio en Python 3.11/3.13.
 
-### 📌 **1. Dataset `orders.csv`**
-| order_id | product_id | quantity | order_date | status    |
-|----------|-----------|----------|------------|-----------|
-| 1        | 101       | 3        | 2023-01-10 | shipped   |
-| 2        | 103       | 1        | 2023-01-11 | shipped   |
-| 3        | 102       | 2        | 2023-01-12 | cancelled |
-| 4        | 101       | 5        | 2023-01-15 | shipped   |
-| 5        | 104       | 2        | 2023-01-15 | pending   |
-| 6        | 105       | 7        | 2023-01-18 | shipped   |
+Se asume registro completo de eventos y turnos para calcular disponibilidad. Una ausencia de paradas registradas no demuestra cobertura de sensores. No se estiman OEE, MTBF, costos laborales, ahorro ni productividad. El MTTR de casos completados puede subestimar los casos largos censurados.
 
-**Descripción de columnas:**
-- `order_id`: Identificador único del pedido.
-- `product_id`: ID del producto comprado.
-- `quantity`: Cantidad de productos en el pedido.
-- `order_date`: Fecha en la que se realizó el pedido.
-- `status`: Estado del pedido (`shipped`, `cancelled`, `pending`).
+## Antecedente educativo
 
-### 📌 **2. Dataset `products.csv`**
-| product_id | product_name  | price  | category   |
-|------------|--------------|--------|------------|
-| 101        | Widget A      | 25.50  | Category A |
-| 102        | Widget B      | 15.00  | Category A |
-| 103        | Thingamajig   | 40.75  | Category B |
-| 104        | Gadget        | 10.00  | Category A |
-| 105        | Machine Part  | 50.00  | Category C |
+El ejercicio original de pedidos y productos se conserva sin reescribir en [legacy/intro_sql](legacy/intro_sql). Su README y notebook describen aquella versión; no son instrucciones de la aplicación actual. Historial base: `8cc0767c9210c2d5b06c7ed9215361d60675efe0`.
 
-**Descripción de columnas:**
-- `product_id`: Identificador único del producto.
-- `product_name`: Nombre del producto.
-- `price`: Precio unitario del producto.
-- `category`: Categoría a la que pertenece.
+Autor: [GzoC](https://github.com/GzoC). Código y datos sintéticos: [MIT](LICENSE).
 
----
-
-## 📊 **Consultas SQL Implementadas**
-✅ `SELECT * FROM orders;` → Consulta todos los pedidos.  
-✅ `SELECT * FROM products;` → Consulta todos los productos.  
-✅ `SELECT * FROM orders WHERE status = 'shipped';` → Filtra pedidos enviados.  
-✅ `SELECT * FROM products ORDER BY price DESC;` → Ordena productos por precio.  
-✅ `SELECT product_id, COUNT(*) FROM orders GROUP BY product_id;` → Agrupa pedidos por producto.  
-✅ `SELECT o.order_id, p.product_name, o.quantity FROM orders o JOIN products p ON o.product_id = p.product_id;` → JOIN entre `orders` y `products`.  
-✅ `SELECT * FROM orders WHERE product_id IN (SELECT product_id FROM products WHERE category = 'Category A');` → Subconsulta de productos en `Category A`.  
-
-🔹 **Ver más consultas en el Notebook** `notebooks/01_sql_analysis.ipynb`.
-
----
-
-## 🚀 **Objetivos del Proyecto**
-✅ Aplicar **SQL** para el análisis de datos.  
-✅ Usar **SQLite** para gestionar bases de datos relacionales.  
-✅ Integrar **Python + SQL** en un flujo de trabajo de Data Analytics.  
-✅ Construir un proyecto **real y profesional** para el portafolio.  
-✅ Demostrar habilidades en **Git, GitHub y control de versiones**.  
-
----
-
-## 🤝 **Contribuciones**
-¡Todas las contribuciones son bienvenidas! Para colaborar:
-1. **Haz un fork** del repositorio.
-2. **Crea una nueva rama**:  
-   ```bash
-   git checkout -b feature/nueva-funcionalidad
-   ```
-3. **Realiza cambios y haz commit**:  
-   ```bash
-   git commit -m "Añadida nueva consulta SQL"
-   ```
-4. **Envía tu contribución con un Pull Request**.
-
----
-
-## 📜 **Licencia**
-Este proyecto está bajo la licencia **MIT**, lo que significa que puedes utilizarlo y modificarlo libremente, pero sin garantías. Revisa el archivo `LICENSE` para más detalles.
-
----
-
-## 📞 **Contacto**
-📧 **Email:** [cisternasalinasg@gmail.com]
-🔗 **LinkedIn:** [linkedin.com/in/gonzalo-cisterna-salinas-369203119] 
-🌐 **Portafolio:** [https://github.com/GzoC]
-
----
-
-💡 **Si este proyecto te resultó útil, dale una ⭐ en GitHub y sígueme para más proyectos de Data Analytics. 🚀**  
-```
-
+English: Reproducible maintenance analytics with SQLite, temporal snapshots, interval union, data constraints and five inspectable business decisions. All operational data are synthetic.
