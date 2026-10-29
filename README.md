@@ -6,6 +6,10 @@ Python · SQLite · CTE · funciones de ventana · integridad relacional · anal
 
 El escenario inventa 12 activos, 261 órdenes y 90 días de operación. No contiene datos de una planta real. El foco es demostrar modelado, calidad de datos y razonamiento temporal: una parada duplicada no debe duplicar horas; una falla abierta no debe reducir artificialmente el MTTR.
 
+![Informe de mantenimiento con cinco preguntas de negocio](docs/images/sql-desktop.png)
+
+[Vista móvil del backlog](docs/images/sql-mobile.png) · [Evidencia de validación](docs/IMPLEMENTATION_STATUS.md)
+
 ## Reproducir en un comando
 
 Python 3.11 o posterior con SQLite 3.37 o posterior. Sin librerías externas de ejecución.
