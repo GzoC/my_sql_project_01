@@ -1,0 +1,396 @@
+{
+  "01_downtime": [
+    {
+      "id": 4,
+      "parent": 0,
+      "notused": 0,
+      "detail": "CO-ROUTINE (subquery-7)"
+    },
+    {
+      "id": 7,
+      "parent": 4,
+      "notused": 0,
+      "detail": "CO-ROUTINE (subquery-8)"
+    },
+    {
+      "id": 9,
+      "parent": 7,
+      "notused": 0,
+      "detail": "CO-ROUTINE totals"
+    },
+    {
+      "id": 12,
+      "parent": 9,
+      "notused": 0,
+      "detail": "MATERIALIZE downtime_union"
+    },
+    {
+      "id": 14,
+      "parent": 12,
+      "notused": 0,
+      "detail": "CO-ROUTINE grouped"
+    },
+    {
+      "id": 17,
+      "parent": 14,
+      "notused": 0,
+      "detail": "CO-ROUTINE (subquery-9)"
+    },
+    {
+      "id": 19,
+      "parent": 17,
+      "notused": 0,
+      "detail": "CO-ROUTINE previous"
+    },
+    {
+      "id": 22,
+      "parent": 19,
+      "notused": 0,
+      "detail": "CO-ROUTINE (subquery-10)"
+    },
+    {
+      "id": 26,
+      "parent": 22,
+      "notused": 225,
+      "detail": "SCAN downtime USING INDEX idx_downtime_asset_start"
+    },
+    {
+      "id": 49,
+      "parent": 19,
+      "notused": 216,
+      "detail": "SCAN (subquery-10)"
+    },
+    {
+      "id": 112,
+      "parent": 17,
+      "notused": 216,
+      "detail": "SCAN previous"
+    },
+    {
+      "id": 145,
+      "parent": 17,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    },
+    {
+      "id": 169,
+      "parent": 14,
+      "notused": 216,
+      "detail": "SCAN (subquery-9)"
+    },
+    {
+      "id": 233,
+      "parent": 12,
+      "notused": 216,
+      "detail": "SCAN grouped"
+    },
+    {
+      "id": 236,
+      "parent": 12,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR GROUP BY"
+    },
+    {
+      "id": 293,
+      "parent": 9,
+      "notused": 216,
+      "detail": "SCAN a"
+    },
+    {
+      "id": 299,
+      "parent": 9,
+      "notused": 0,
+      "detail": "BLOOM FILTER ON d (asset_id=?)"
+    },
+    {
+      "id": 316,
+      "parent": 9,
+      "notused": 47,
+      "detail": "SEARCH d USING AUTOMATIC PARTIAL COVERING INDEX (asset_id=?) LEFT-JOIN"
+    },
+    {
+      "id": 374,
+      "parent": 7,
+      "notused": 82,
+      "detail": "SCAN totals"
+    },
+    {
+      "id": 386,
+      "parent": 7,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    },
+    {
+      "id": 404,
+      "parent": 4,
+      "notused": 82,
+      "detail": "SCAN (subquery-8)"
+    },
+    {
+      "id": 456,
+      "parent": 0,
+      "notused": 82,
+      "detail": "SCAN (subquery-7)"
+    },
+    {
+      "id": 528,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ],
+  "02_mttr": [
+    {
+      "id": 8,
+      "parent": 0,
+      "notused": 216,
+      "detail": "SCAN a"
+    },
+    {
+      "id": 12,
+      "parent": 0,
+      "notused": 0,
+      "detail": "BLOOM FILTER ON f (asset_id=?)"
+    },
+    {
+      "id": 29,
+      "parent": 0,
+      "notused": 53,
+      "detail": "SEARCH f USING AUTOMATIC PARTIAL COVERING INDEX (asset_id=?) LEFT-JOIN"
+    },
+    {
+      "id": 108,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ],
+  "03_backlog": [
+    {
+      "id": 3,
+      "parent": 0,
+      "notused": 0,
+      "detail": "CO-ROUTINE (subquery-2)"
+    },
+    {
+      "id": 8,
+      "parent": 3,
+      "notused": 204,
+      "detail": "SEARCH w USING INDEX idx_order_open (opened_at<?)"
+    },
+    {
+      "id": 23,
+      "parent": 3,
+      "notused": 45,
+      "detail": "SEARCH a USING INTEGER PRIMARY KEY (rowid=?)"
+    },
+    {
+      "id": 38,
+      "parent": 3,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    },
+    {
+      "id": 61,
+      "parent": 0,
+      "notused": 194,
+      "detail": "SCAN (subquery-2)"
+    },
+    {
+      "id": 128,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ],
+  "04_parts": [
+    {
+      "id": 4,
+      "parent": 0,
+      "notused": 0,
+      "detail": "CO-ROUTINE (subquery-3)"
+    },
+    {
+      "id": 7,
+      "parent": 4,
+      "notused": 0,
+      "detail": "CO-ROUTINE (subquery-4)"
+    },
+    {
+      "id": 9,
+      "parent": 7,
+      "notused": 0,
+      "detail": "CO-ROUTINE cost"
+    },
+    {
+      "id": 17,
+      "parent": 9,
+      "notused": 165,
+      "detail": "SEARCH u USING INDEX idx_usage_date (used_at>? AND used_at<?)"
+    },
+    {
+      "id": 27,
+      "parent": 9,
+      "notused": 45,
+      "detail": "SEARCH p USING INTEGER PRIMARY KEY (rowid=?)"
+    },
+    {
+      "id": 30,
+      "parent": 9,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR GROUP BY"
+    },
+    {
+      "id": 76,
+      "parent": 7,
+      "notused": 82,
+      "detail": "SCAN cost"
+    },
+    {
+      "id": 89,
+      "parent": 7,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    },
+    {
+      "id": 108,
+      "parent": 4,
+      "notused": 82,
+      "detail": "SCAN (subquery-4)"
+    },
+    {
+      "id": 162,
+      "parent": 0,
+      "notused": 82,
+      "detail": "SCAN (subquery-3)"
+    },
+    {
+      "id": 239,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ],
+  "05_shifts": [
+    {
+      "id": 3,
+      "parent": 0,
+      "notused": 0,
+      "detail": "MATERIALIZE per_shift"
+    },
+    {
+      "id": 6,
+      "parent": 3,
+      "notused": 0,
+      "detail": "MATERIALIZE downtime_union"
+    },
+    {
+      "id": 8,
+      "parent": 6,
+      "notused": 0,
+      "detail": "CO-ROUTINE grouped"
+    },
+    {
+      "id": 11,
+      "parent": 8,
+      "notused": 0,
+      "detail": "CO-ROUTINE (subquery-8)"
+    },
+    {
+      "id": 13,
+      "parent": 11,
+      "notused": 0,
+      "detail": "CO-ROUTINE previous"
+    },
+    {
+      "id": 16,
+      "parent": 13,
+      "notused": 0,
+      "detail": "CO-ROUTINE (subquery-9)"
+    },
+    {
+      "id": 20,
+      "parent": 16,
+      "notused": 225,
+      "detail": "SCAN downtime USING INDEX idx_downtime_asset_start"
+    },
+    {
+      "id": 43,
+      "parent": 13,
+      "notused": 216,
+      "detail": "SCAN (subquery-9)"
+    },
+    {
+      "id": 106,
+      "parent": 11,
+      "notused": 216,
+      "detail": "SCAN previous"
+    },
+    {
+      "id": 139,
+      "parent": 11,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    },
+    {
+      "id": 163,
+      "parent": 8,
+      "notused": 216,
+      "detail": "SCAN (subquery-8)"
+    },
+    {
+      "id": 227,
+      "parent": 6,
+      "notused": 216,
+      "detail": "SCAN grouped"
+    },
+    {
+      "id": 230,
+      "parent": 6,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR GROUP BY"
+    },
+    {
+      "id": 286,
+      "parent": 3,
+      "notused": 216,
+      "detail": "SCAN shifts"
+    },
+    {
+      "id": 296,
+      "parent": 3,
+      "notused": 0,
+      "detail": "BLOOM FILTER ON d (asset_id=?)"
+    },
+    {
+      "id": 307,
+      "parent": 3,
+      "notused": 47,
+      "detail": "SEARCH d USING AUTOMATIC COVERING INDEX (asset_id=?) LEFT-JOIN"
+    },
+    {
+      "id": 402,
+      "parent": 0,
+      "notused": 216,
+      "detail": "SCAN a"
+    },
+    {
+      "id": 408,
+      "parent": 0,
+      "notused": 0,
+      "detail": "BLOOM FILTER ON s (asset_id=?)"
+    },
+    {
+      "id": 420,
+      "parent": 0,
+      "notused": 47,
+      "detail": "SEARCH s USING AUTOMATIC COVERING INDEX (asset_id=?) LEFT-JOIN"
+    },
+    {
+      "id": 479,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ]
+}

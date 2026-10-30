@@ -1,0 +1,13 @@
+asset_id,name,area,criticality
+1,Equipo 01,Línea A,2
+2,Equipo 02,Línea A,3
+3,Equipo 03,Línea A,1
+4,Equipo 04,Línea A,2
+5,Equipo 05,Línea A,3
+6,Equipo 06,Línea A,1
+7,Equipo 07,Línea B,2
+8,Equipo 08,Línea B,3
+9,Equipo 09,Línea B,1
+10,Equipo 10,Línea B,2
+11,Equipo 11,Línea B,3
+12,Equipo 12,Línea B,1

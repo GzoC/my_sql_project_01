@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "maintenance-sql-analytics"
+version = "1.0.0"
+description = "Reproducible maintenance decisions with SQLite and synthetic data"
+requires-python = ">=3.11"
+license = "MIT"
+
+[project.scripts]
+maintenance-sql = "maintenance_sql.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["maintenance_sql*"]
+
+[tool.setuptools.package-data]
+maintenance_sql = ["sql/*.sql"]
